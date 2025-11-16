@@ -153,7 +153,7 @@ const About = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Our expert instructors bring years of real-world trading experience to every course
             </p>
-          </div>
+          </div> 
 
           {/* Team Members Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
