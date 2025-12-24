@@ -1,17 +1,15 @@
-import { TrendingUp, Target, Users, Award, Heart, Shield } from 'lucide-react'
+import { TrendingUp, Target, Users, Award, Heart, Shield } from 'lucide-react';
 // Import local team member images
-import usmanImage from '../image/Usman-M-Kafi.jpg'
+import usmanImage from '../image/Usman-M-Kafi.jpg';
 
 const About = () => {
   // Team Members Data
-  // Each member includes: name, role, bio, and professional headshot image
-  // Note: Usman M. Kafi uses a local image, others use Unsplash images
   const teamMembers = [
     {
       name: 'Usman M. Kafi',
       role: 'Founder & Lead Instructor',
       bio: 'With over 15 years of trading experience, Usman has managed multi-million dollar portfolios and trained hundreds of successful traders.',
-      image: usmanImage, // Local image from src/image/Usman-M-Kafi.jpg
+      image: usmanImage,
     },
     {
       name: 'Sarah Johnson',
@@ -31,10 +29,9 @@ const About = () => {
       bio: 'Mariam combines her background in psychology with trading expertise to help students overcome mental barriers and build discipline.',
       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&q=80',
     },
-  ]
+  ];
 
   // Academy Core Values
-  // Each value includes: icon component, title, and description
   const values = [
     {
       icon: Shield,
@@ -66,47 +63,47 @@ const About = () => {
       title: 'Innovation',
       description: 'We stay ahead of the curve, teaching cutting-edge strategies and techniques that work in today\'s markets.',
     },
-  ]
+  ];
 
   return (
-    <div className="pt-16 md:pt-20 min-h-screen bg-gray-50">
+    <div className="pt-24 min-h-screen bg-background pb-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-success-600 text-white py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-            About UMK Trading Academy
-          </h1>
-          <p className="text-xl text-white/90 max-w-3xl">
-            Empowering traders worldwide with comprehensive education, proven strategies, and unwavering support
-          </p>
-        </div>
+      <section className="relative px-4 sm:px-6 lg:px-8 mb-20 text-center animate-fade-in">
+        {/* Background Effect */}
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none" />
+
+        <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
+          Our <span className="text-gradient-gold">Legacy</span>
+        </h1>
+        <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          Empowering traders worldwide with institutional-grade education,
+          proprietary strategies, and unwavering mentorship.
+        </p>
       </section>
 
       {/* Our Story */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6 text-center">
-              Our Story
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+        <div className="glass-panel rounded-2xl p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+
+          <div className="max-w-3xl mx-auto relative z-10">
+            <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
+              The Origin Story
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+            <div className="space-y-6 text-slate-300 text-lg leading-relaxed">
               <p>
-                UMK Trading Academy was founded with a simple yet powerful mission: to democratize
-                access to professional trading education. After years of witnessing traders struggle
-                with inadequate resources and misleading information, we set out to create something
-                different.
+                UMK Trading Academy was founded on a rebellion against the status quo.
+                After witnessing countless aspiring traders fall victim to "get rich quick" schemes
+                and shallow signal services, we decided to build the antidote.
               </p>
               <p>
-                Our journey began when our founder, Usman M. Kafi, realized that most trading education
-                platforms focused on quick profits rather than building sustainable trading skills.
-                We saw a gap in the market for comprehensive, honest, and practical trading education
-                that truly prepares students for long-term success.
+                Our founder, <strong className="text-primary">Usman M. Kafi</strong>, realized that true profitability
+                couldn't be copied—it had to be learned. We stripped away the noise to focus
+                on what actually moves markets: <span className="text-white">Institutional Logic, Market Structure, and Biological Psychology.</span>
               </p>
               <p>
-                Today, UMK Trading Academy has grown into a trusted institution, having trained
-                thousands of traders across the globe. We specialize in both traditional forex
-                trading and the emerging field of synthetic trading instruments, providing our
-                students with a unique competitive advantage.
+                Today, we aren't just an academy; we are a fortress of discipline for thousands of
+                traders globally, mastering both Forex and Synthetic indices.
               </p>
             </div>
           </div>
@@ -114,111 +111,102 @@ const About = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-white rounded-xl p-8 shadow-md">
-              <h3 className="text-2xl font-heading font-bold text-gray-900 mb-4">
-                Our Mission
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                To provide world-class trading education that empowers individuals to achieve
-                financial independence through disciplined trading, comprehensive risk management,
-                and continuous learning. We are committed to transparency, integrity, and the
-                long-term success of every student.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl p-8 shadow-md">
-              <h3 className="text-2xl font-heading font-bold text-gray-900 mb-4">
-                Our Vision
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                To become the world's most trusted trading education platform, recognized for
-                producing consistently successful traders who understand not just how to trade, but
-                how to manage risk, maintain discipline, and build sustainable trading careers.
-              </p>
-            </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-[#0B1221] border border-white/5 rounded-2xl p-8 hover:border-primary/30 transition-colors duration-300">
+            <h3 className="text-2xl font-heading font-bold text-white mb-4 flex items-center gap-3">
+              <Target className="text-primary" />
+              Our Mission
+            </h3>
+            <p className="text-slate-400 leading-relaxed">
+              To democratize access to institutional trading knowledge. We exist to prove that
+              financial independence is a skill set, not a stroke of luck, by providing
+              mentorship that is as rigorous as it is accessible.
+            </p>
+          </div>
+          <div className="bg-[#0B1221] border border-white/5 rounded-2xl p-8 hover:border-primary/30 transition-colors duration-300">
+            <h3 className="text-2xl font-heading font-bold text-white mb-4 flex items-center gap-3">
+              <TrendingUp className="text-primary" />
+              Our Vision
+            </h3>
+            <p className="text-slate-400 leading-relaxed">
+              To be the global standard for retail trading education, creating a verified
+              community of profitable traders who understand risk, respect the market,
+              and trade with unwavering self-control.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Meet the Team Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
-              Meet the Team
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our expert instructors bring years of real-world trading experience to every course
-            </p>
-          </div> 
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
+            Master <span className="text-gradient-gold">Instructors</span>
+          </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            Real traders. Real portfolios. Real experience.
+          </p>
+        </div>
 
-          {/* Team Members Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 border border-gray-100"
-              >
-                {/* Member Photo */}
-                <div className="relative w-32 h-32 mx-auto mb-4">
-                  <img
-                    src={member.image}
-                    alt={`${member.name} - ${member.role}`}
-                    className="w-full h-full rounded-full object-cover border-4 border-primary-100 shadow-md"
-                  />
-                </div>
-                
-                {/* Member Info */}
-                <h3 className="text-xl font-semibold text-gray-900 mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-primary-600 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {teamMembers.map((member, index) => (
+            <div
+              key={index}
+              className="group relative bg-[#0B1221] border border-white/5 rounded-2xl p-6 text-center hover:-translate-y-2 transition-all duration-300 hover:shadow-glow"
+            >
+              {/* Member Photo */}
+              <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg group-hover:bg-primary/40 transition-all" />
+                <img
+                  src={member.image}
+                  alt={`${member.name} - ${member.role}`}
+                  className="w-full h-full rounded-full object-cover border-2 border-white/10 group-hover:border-primary transition-colors relative z-10"
+                />
               </div>
-            ))}
-          </div>
+
+              <h3 className="text-xl font-heading font-bold text-white mb-1 group-hover:text-primary transition-colors">
+                {member.name}
+              </h3>
+              <p className="text-primary/80 text-sm font-medium mb-4 uppercase tracking-wider">{member.role}</p>
+              <p className="text-slate-500 text-sm leading-relaxed">{member.bio}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Academy Values */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-primary-50 to-success-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
-              Our Core Values
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              The principles that guide everything we do at UMK Trading Academy
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((value, index) => {
-              const Icon = value.icon
-              return (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-success-500 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-600">{value.description}</p>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
+            Core Values
+          </h2>
+          <p className="text-slate-400">The architecture of our discipline.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {values.map((value, index) => {
+            const Icon = value.icon;
+            return (
+              <div
+                key={index}
+                className="bg-white/5 border border-white/5 rounded-xl p-8 hover:bg-white/10 transition-colors group"
+              >
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
-              )
-            })}
-          </div>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {value.title}
+                </h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{value.description}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;
 
 

@@ -1,50 +1,49 @@
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, TrendingUp } from 'lucide-react'
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ChevronRight } from 'lucide-react';
+import Button from './Button';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const location = useLocation()
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/courses', label: 'Courses' },
-    { path: '/pricing', label: 'Pricing' },
-    { path: '/about', label: 'About' },
-    { path: '/contact', label: 'Contact' },
-  ]
+    { name: 'Home', path: '/' },
+    { name: 'Courses', path: '/courses' },
+    { name: 'About', path: '/about' },
+    { name: 'Pricing', path: '/pricing' },
+    { name: 'Contact', path: '/contact' },
+  ];
 
-  const isActive = (path) => location.pathname === path
+  const isActive = (path) => {
+    return location.pathname === path ? 'text-primary' : 'text-slate-300 hover:text-primary';
+  };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white shadow-lg'
-          : 'bg-white/95 backdrop-blur-sm'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled || isOpen ? 'glass-panel py-3' : 'bg-transparent py-5'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center space-x-2 group"
-          >
-            <div className="bg-gradient-to-br from-primary-600 to-success-600 p-2 rounded-lg group-hover:scale-110 transition-transform">
-              <TrendingUp className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xl md:text-2xl font-heading font-bold bg-gradient-to-r from-primary-600 to-success-600 bg-clip-text text-transparent">
-              UMK Trading Academy
+          <Link to="/" className="flex items-center group">
+            <span className="font-heading text-2xl font-bold tracking-tighter text-white">
+              UMK<span className="text-primary">.</span>Trading
             </span>
           </Link>
 
@@ -52,94 +51,60 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
-                key={link.path}
+                key={link.name}
                 to={link.path}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive(link.path)
-                    ? 'text-primary-600'
-                    : 'text-gray-700 hover:text-primary-600'
-                }`}
+                className={`text-sm font-medium tracking-wide transition-colors duration-200 ${isActive(link.path)}`}
               >
-                {link.label}
-                {isActive(link.path) && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 rounded-full" />
-                )}
+                {link.name}
               </Link>
             ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/dashboard"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
-            >
-              Login
-            </Link>
-            <Link
-              to="/pricing"
-              className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-success-600 text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-200"
-            >
-              Sign Up
+            <Link to="/courses">
+              <Button variant="primary" className="!py-2 !px-5 text-sm">
+                Get Started
+              </Button>
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white hover:text-primary transition-colors"
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden border-t border-gray-200 bg-white animate-fade-in">
-          <div className="px-4 pt-2 pb-4 space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                  isActive(link.path)
-                    ? 'bg-primary-50 text-primary-600'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-primary-600'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="pt-4 space-y-2">
-              <Link
-                to="/dashboard"
-                onClick={() => setIsOpen(false)}
-                className="block w-full text-center px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-md transition-colors"
-              >
-                Login
-              </Link>
-              <Link
-                to="/pricing"
-                onClick={() => setIsOpen(false)}
-                className="block w-full text-center px-4 py-2.5 bg-gradient-to-r from-primary-600 to-success-600 text-white text-base font-semibold rounded-lg hover:shadow-lg transition-all"
-              >
-                Sign Up
-              </Link>
-            </div>
+      <div
+        className={`md:hidden absolute top-full left-0 w-full glass-panel border-t border-white/10 transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+          }`}
+      >
+        <div className="flex flex-col space-y-4 p-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={`text-lg font-medium ${isActive(link.path)}`}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <div className="pt-4 border-t border-white/10">
+            <Link to="/courses" className="block w-full">
+              <Button variant="primary" className="w-full justify-center">
+                Start Learning
+              </Button>
+            </Link>
           </div>
         </div>
-      )}
+      </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
 
 

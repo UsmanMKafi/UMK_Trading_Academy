@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
-import Accordion from '../components/Accordion'
+import { useState } from 'react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import Accordion from '../components/Accordion';
+import Button from '../components/Button';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,22 +9,21 @@ const Contact = () => {
     email: '',
     subject: '',
     message: '',
-  })
+  });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    // Placeholder submission logic
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! We will get back to you soon.')
-    setFormData({ name: '', email: '', subject: '', message: '' })
-  }
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    alert('Thank you for your message! To actually send emails, you would integrate a backend service here.');
+    setFormData({ name: '', email: '', subject: '', message: '' });
+  };
 
   const faqItems = [
     {
@@ -64,7 +64,7 @@ const Contact = () => {
     {
       question: 'Do you offer one-on-one mentorship?',
       answer:
-        'Yes, our Pro and VIP plans include one-on-one mentorship sessions. Pro plan includes 2 hours per month, while VIP includes unlimited mentorship.',
+        'Yes, our Pro and VIP plans include one-on-one mentorship sessions. Pro plan includes 2 hours per month, while VIP includes unlimited sessions.',
     },
     {
       question: 'Are the courses suitable for complete beginners?',
@@ -76,186 +76,162 @@ const Contact = () => {
       answer:
         'We provide guidance on various trading platforms in our courses. We focus on teaching principles that apply across platforms, but we do provide specific recommendations based on your trading style and needs.',
     },
-  ]
+  ];
 
   return (
-    <div className="pt-16 md:pt-20 min-h-screen bg-gray-50">
+    <div className="pt-24 min-h-screen bg-background pb-20">
       {/* Header */}
-      <section className="bg-gradient-to-r from-primary-600 to-success-600 text-white py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-            Get in Touch
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Have questions? We're here to help. Reach out to us and we'll respond as soon as possible.
-          </p>
-        </div>
+      <section className="relative px-4 sm:px-6 lg:px-8 mb-20 text-center animate-fade-in">
+        <div className="absolute top-0 right-1/4 w-64 h-64 bg-primary/10 blur-[90px] rounded-full mix-blend-screen pointer-events-none" />
+
+        <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
+          Get in <span className="text-gradient-gold">Touch</span>
+        </h1>
+        <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          Have questions about your trading journey? Our support team is ready to assist.
+        </p>
       </section>
 
-      {/* Contact Information & Form */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Information */}
-            <div className="lg:col-span-1">
-              <div className="bg-white rounded-xl shadow-md p-8">
-                <h2 className="text-2xl font-heading font-bold text-gray-900 mb-6">
-                  Contact Information
-                </h2>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-6 h-6 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                      <a
-                        href="mailto:info@umktradingacademy.com"
-                        className="text-primary-600 hover:text-primary-700"
-                      >
-                        info@umktradingacademy.com
-                      </a>
-                    </div>
+      {/* Contact Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+          {/* Contact Info Card */}
+          <div className="lg:col-span-1">
+            <div className="glass-panel rounded-2xl p-8 h-full border border-white/5">
+              <h2 className="text-2xl font-heading font-bold text-white mb-8">
+                Contact Info
+              </h2>
+
+              <div className="space-y-8">
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors border border-primary/20">
+                    <Mail className="w-5 h-5 text-primary" />
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                      <a
-                        href="tel:+1234567890"
-                        className="text-primary-600 hover:text-primary-700"
-                      >
-                        +2348136752195
-                      </a>
-                    </div>
+                  <div>
+                    <h3 className="font-bold text-white mb-1">Email Us</h3>
+                    <a href="mailto:info@umktradingacademy.com" className="text-slate-400 hover:text-primary transition-colors text-sm">
+                      info@umktradingacademy.com
+                    </a>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Address</h3>
-                      <p className="text-gray-600">
-                        No.7 Lere Close,<br />
-                        Off Kirfi Road,<br />
-                        New GRA, Bauchi, Nigeria.
-                      </p>
-                    </div>
+                </div>
+
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors border border-primary/20">
+                    <Phone className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white mb-1">Call Us</h3>
+                    <a href="tel:+2348136752195" className="text-slate-400 hover:text-primary transition-colors text-sm">
+                      +234 813 675 2195
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors border border-primary/20">
+                    <MapPin className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white mb-1">Visit HQ</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      No.7 Lere Close,<br />
+                      Off Kirfi Road,<br />
+                      New GRA, Bauchi, Nigeria.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <div className="bg-white rounded-xl shadow-md p-8">
-                <h2 className="text-2xl font-heading font-bold text-gray-900 mb-6">
-                  Send us a Message
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-700 mb-2"
-                      >
-                        Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700 mb-2"
-                      >
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-                  </div>
+          {/* Contact Form */}
+          <div className="lg:col-span-2">
+            <div className="bg-[#0B1221] border border-white/5 rounded-2xl p-8 md:p-10 shadow-xl">
+              <h2 className="text-2xl font-heading font-bold text-white mb-8">
+                Send a Message
+              </h2>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label
-                      htmlFor="subject"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Subject *
-                    </label>
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-2">Name</label>
                     <input
                       type="text"
-                      id="subject"
-                      name="subject"
+                      id="name"
+                      name="name"
                       required
-                      value={formData.subject}
+                      value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="What is this regarding?"
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all placeholder:text-slate-600"
+                      placeholder="Your full name"
                     />
                   </div>
                   <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-400 mb-2">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
                       required
-                      rows={6}
-                      value={formData.message}
+                      value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
-                      placeholder="Tell us how we can help..."
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all placeholder:text-slate-600"
+                      placeholder="your@email.com"
                     />
                   </div>
-                  <button
-                    type="submit"
-                    className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-primary-600 to-success-600 text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2"
-                  >
-                    <span>Send Message</span>
-                    <Send className="w-5 h-5" />
-                  </button>
-                </form>
-              </div>
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-slate-400 mb-2">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    required
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all placeholder:text-slate-600"
+                    placeholder="How can we help?"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-2">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={6}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all placeholder:text-slate-600 resize-none"
+                    placeholder="Write your message here..."
+                  />
+                </div>
+
+                <Button type="submit" className="w-full md:w-auto">
+                  <span className="flex items-center gap-2">
+                    Send Message <Send className="w-4 h-4" />
+                  </span>
+                </Button>
+              </form>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-heading font-bold text-center text-gray-900 mb-12">
-            Frequently Asked Questions
-          </h2>
-          <Accordion items={faqItems} />
-        </div>
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-heading font-bold text-center text-white mb-12">
+          Common Questions
+        </h2>
+        <Accordion items={faqItems} />
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
 
 

@@ -1,150 +1,97 @@
-import { Link } from 'react-router-dom'
-import { Facebook, Twitter, Instagram, Linkedin, Mail, TrendingUp } from 'lucide-react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Facebook, Twitter, Instagram, Linkedin, Mail, ShieldCheck, Lock } from 'lucide-react';
+import Button from './Button';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
-
-  const footerLinks = {
-    navigation: [
-      { path: '/', label: 'Home' },
-      { path: '/courses', label: 'Courses' },
-      { path: '/pricing', label: 'Pricing' },
-      { path: '/about', label: 'About' },
-      { path: '/contact', label: 'Contact' },
-    ],
-    resources: [
-      { path: '/courses', label: 'Course Catalog' },
-      { path: '/pricing', label: 'Pricing Plans' },
-      { path: '/about', label: 'Our Team' },
-      { path: '/contact', label: 'FAQ' },
-    ],
-    legal: [
-      { path: '#', label: 'Privacy Policy' },
-      { path: '#', label: 'Terms of Service' },
-      { path: '#', label: 'Refund Policy' },
-      { path: '#', label: 'Disclaimer' },
-    ],
-  }
-
-  const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  ]
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <Link
-              to="/"
-              className="flex items-center space-x-2 mb-4 group"
-            >
-              <div className="bg-gradient-to-br from-primary-600 to-success-600 p-2 rounded-lg group-hover:scale-110 transition-transform">
-                <TrendingUp className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-heading font-bold bg-gradient-to-r from-primary-400 to-success-400 bg-clip-text text-transparent">
-                UMK Trading Academy
+    <footer className="bg-[#050810] text-slate-400 border-t border-white/5 font-sans relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+          {/* Brand Column */}
+          <div className="space-y-6">
+            <Link to="/" className="inline-block group">
+              <span className="font-heading text-2xl font-bold tracking-tighter text-white">
+                UMK<span className="text-primary">.</span>Trading
               </span>
             </Link>
-            <p className="text-gray-400 mb-6 max-w-md">
-              Master Forex & Synthetics Trading with proven strategies from industry experts. 
-              Achieve financial freedom through comprehensive education and dedicated support.
+            <p className="text-sm leading-relaxed text-slate-500">
+              The premier destination for mastering forex and synthetic indices.
+              Institutional-grade strategies for the retail trader.
             </p>
-            <div className="flex items-center space-x-2 text-gray-400">
-              <Mail className="w-5 h-5" />
-              <a
-                href="mailto:info@umktradingacademy.com"
-                className="hover:text-primary-400 transition-colors"
-              >
-                info@umktradingacademy.com
-              </a>
+            <div className="flex items-center gap-4 pt-2">
+              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+                <a key={i} href="#" className="w-10 h-10 rounded-full glass-button flex items-center justify-center hover:text-primary transition-colors">
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Navigation Links */}
+          {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Navigation</h3>
-            <ul className="space-y-3">
-              {footerLinks.navigation.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="hover:text-primary-400 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-white font-heading font-semibold mb-6">Academy</h4>
+            <ul className="space-y-4 text-sm">
+              <li><Link to="/courses" className="hover:text-primary transition-colors">All Courses</Link></li>
+              <li><Link to="/pricing" className="hover:text-primary transition-colors">Membership Plans</Link></li>
+              <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link to="/success-stories" className="hover:text-primary transition-colors">Success Stories</Link></li>
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Support */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="hover:text-primary-400 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-white font-heading font-semibold mb-6">Support</h4>
+            <ul className="space-y-4 text-sm">
+              <li><Link to="/contact" className="hover:text-primary transition-colors">Contact Support</Link></li>
+              <li><Link to="/faq" className="hover:text-primary transition-colors">FAQs</Link></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Newsletter */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Legal</h3>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.path}>
-                  <a
-                    href={link.path}
-                    className="hover:text-primary-400 transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <h4 className="text-white font-heading font-semibold mb-6">Stay Ahead</h4>
+            <p className="text-xs text-slate-500 mb-4">Get weekly market insights and trading tips.</p>
+            <div className="space-y-3">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-primary/50 transition-colors text-white placeholder:text-slate-600"
+              />
+              <Button variant="primary" className="w-full !py-2">Subscribe</Button>
+            </div>
           </div>
         </div>
 
-        {/* Social Media & Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex space-x-6">
-              {socialLinks.map((social) => {
-                const Icon = social.icon
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary-600 hover:scale-110 transition-all duration-200"
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                )
-              })}
+        {/* Trust & Copyright */}
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-slate-600">
+            © {currentYear} UMK Trading Academy. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <ShieldCheck size={14} className="text-primary" />
+              <span>SSL Secured Information</span>
             </div>
-            <p className="text-gray-400 text-sm">
-              © {currentYear} UMK Trading Academy. All rights reserved.
-            </p>
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <Lock size={14} className="text-primary" />
+              <span>Encrypted Payment</span>
+            </div>
           </div>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
 
 
